@@ -108,7 +108,8 @@ class CommentViewSet(viewsets.ModelViewSet):
         instance = self.get_object()
 
         if instance.author != request.user:
-            raise PermissionDenied("Невозможно удалить пост другого пользователя!")
+            raise PermissionDenied(
+                "Невозможно удалить пост другого пользователя!")
 
         self.perform_destroy(instance)
         return Response(status=status.HTTP_204_NO_CONTENT)
